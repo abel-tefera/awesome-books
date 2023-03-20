@@ -97,7 +97,23 @@ const recreateUI = (currentBooksData = booksData) => {
   mainContainer.appendChild(bookContainer);
 };
 
+const addBookHandler = (e) => {
+  e.preventDefault();
+  const bookTitle = document.querySelector(".new-book-title").value;
+  const bookAuthor = document.querySelector(".new-book-author").value;
 
+  booksData.push({
+    id: Date.now(),
+    title: bookTitle,
+    author: bookAuthor,
+    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
+        earum saepe fugiat!`,
+    cover: "assets/book.png",
+  });
+
+  localStorage.setItem("booksData", JSON.stringify(booksData));
+  recreateUI();
+};
 
 const main = () => {
   const booksDataFromLocalStorage = JSON.parse(
