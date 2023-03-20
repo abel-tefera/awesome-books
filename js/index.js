@@ -121,8 +121,7 @@ const main = () => {
   );
   const booksLSExists =
     booksDataFromLocalStorage !== undefined &&
-    booksDataFromLocalStorage !== null &&
-    booksDataFromLocalStorage.length !== 0;
+    booksDataFromLocalStorage !== null;
 
   const initialBooksData = booksLSExists
     ? booksDataFromLocalStorage
