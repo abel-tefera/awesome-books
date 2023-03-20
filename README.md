@@ -139,11 +139,17 @@ You can deploy this project using: N/A
 
 ## 👥 Authors <a name="authors"></a>
 
-👤 **Author1**
+👤 **ABEL TEFERA**
 
 - GitHub: [@abel-tefera](https://github.com/abel-tefera)
 - Twitter: [@twitterhandle](https://twitter.com/abelteferabelay)
 - LinkedIn: [LinkedIn](https://linkedin.com/in/abel-tefera-b1b625153)
+
+👤 **TOM DANIEL**
+
+- GitHub: [@tomdan-ai](https://github.com/tomdan-ai)
+- Twitter: [@twitterhandle](https://twitter.com/tomudoh1)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/tom-udoh-a89046256/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
