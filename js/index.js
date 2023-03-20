@@ -1,6 +1,6 @@
 let booksData = [
   {
-    id: `1`,
+    id: 1,
     title: `Lorem, ipsum.`,
     author: `John Doe`,
     description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
@@ -8,7 +8,7 @@ let booksData = [
     cover: `assets/book.png`,
   },
   {
-    id: `2`,
+    id: 2,
     title: `Lorem, ipsum.`,
     author: `John Doe`,
     description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
@@ -16,7 +16,7 @@ let booksData = [
     cover: `assets/book.png`,
   },
   {
-    id: `3`,
+    id: 3,
     title: `Lorem, ipsum.`,
     author: `John Doe`,
     description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
@@ -24,7 +24,7 @@ let booksData = [
     cover: `assets/book.png`,
   },
   {
-    id: `4`,
+    id: 4,
     title: `Lorem, ipsum.`,
     author: `John Doe`,
     description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
@@ -96,8 +96,6 @@ const recreateUI = (currentBooksData = booksData) => {
 
   mainContainer.appendChild(bookContainer);
 };
-
-
 
 const main = () => {
   const booksDataFromLocalStorage = JSON.parse(
