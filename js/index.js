@@ -1,40 +1,79 @@
 /* eslint-disable require-jsdoc */
 /* eslint-disable no-unused-vars */
 
-let booksData = [
-  {
-    id: 1,
-    title: `Lorem, ipsum.`,
-    author: `John Doe`,
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
-        earum saepe fugiat!`,
-    cover: `assets/book.png`,
-  },
-  {
-    id: 2,
-    title: `Lorem, ipsum.`,
-    author: `John Doe`,
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
-        earum saepe fugiat!`,
-    cover: `assets/book.png`,
-  },
-  {
-    id: 3,
-    title: `Lorem, ipsum.`,
-    author: `John Doe`,
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
-        earum saepe fugiat!`,
-    cover: `assets/book.png`,
-  },
-  {
-    id: 4,
-    title: `Lorem, ipsum.`,
-    author: `John Doe`,
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
-        earum saepe fugiat!`,
-    cover: `assets/book.png`,
-  },
-];
+class Book {
+  constructor(title, author) {
+    this.id = Date.now();
+    this.title = title;
+    this.author = author;
+    this.description = `Lorem ipsum dolor sit amet 
+    consectetur adipisicing elit. Velit
+    earum saepe fugiat!`;
+    this.cover = `assets/book.png`;
+  }
+}
+
+class Library {
+  constructor() {
+    const booksDataFromLocalStorage = JSON.parse(
+        localStorage.getItem('booksData'),
+    );
+    const booksLSExists =
+      booksDataFromLocalStorage !== undefined &&
+      booksDataFromLocalStorage !== null;
+
+    this.booksData = booksLSExists ?
+      booksDataFromLocalStorage :
+      [
+        {
+          id: 1,
+          title: `Lorem, ipsum.`,
+          author: `John Doe`,
+          description: `Lorem ipsum dolor sit amet consectetur 
+          adipisicing elit. Velit
+            earum saepe fugiat!`,
+          cover: `assets/book.png`,
+        },
+        {
+          id: 2,
+          title: `Lorem, ipsum.`,
+          author: `John Doe`,
+          description: `Lorem ipsum dolor sit amet consectetur 
+          adipisicing elit. Velit
+            earum saepe fugiat!`,
+          cover: `assets/book.png`,
+        },
+        {
+          id: 3,
+          title: `Lorem, ipsum.`,
+          author: `John Doe`,
+          description: `Lorem ipsum dolor sit amet consectetur 
+          adipisicing elit. Velit
+            earum saepe fugiat!`,
+          cover: `assets/book.png`,
+        },
+        {
+          id: 4,
+          title: `Lorem, ipsum.`,
+          author: `John Doe`,
+          description: `Lorem ipsum dolor sit amet consectetur 
+          adipisicing elit. Velit
+            earum saepe fugiat!`,
+          cover: `assets/book.png`,
+        },
+      ];
+  }
+  addBook(book) {
+    this.booksData.push(book);
+    localStorage.setItem('booksData', JSON.stringify(this.booksData));
+  }
+  removeBook(bookId) {
+    this.booksData = this.booksData.filter(({id}) => id !== bookId);
+    localStorage.setItem('booksData', JSON.stringify(this.booksData));
+  }
+}
+
+const library = new Library();
 
 class bookCard extends HTMLElement {
   constructor() {
@@ -63,9 +102,7 @@ class bookCard extends HTMLElement {
     cardBtns.forEach((cardBtn) => {
       const idx = parseInt(cardBtn.id.split('-')[2]);
       cardBtn.addEventListener('click', () => {
-        booksData = booksData.filter(({id}) => id !== idx);
-        localStorage.setItem('booksData', JSON.stringify(booksData));
-        recreateUI();
+        removeBook(idx);
       });
     });
   }
@@ -75,7 +112,7 @@ customElements.define('book-card', bookCard);
 
 const addBookModal = document.querySelector('.modal');
 
-const recreateUI = (currentBooksData = booksData) => {
+const recreateUI = () => {
   const existingBooks = document.querySelector('.books-container');
   if (existingBooks) {
     existingBooks.remove();
@@ -84,10 +121,10 @@ const recreateUI = (currentBooksData = booksData) => {
   const bookContainer = document.createElement('div');
   bookContainer.classList.add('row', 'books-container');
 
-  for (const book of currentBooksData) {
+  for (const book of library.booksData) {
     const {id, title, author, description, cover} = book;
     const bookItem = document.createElement('div');
-    bookItem.classList.add('col-12', 'col-md-6', 'col-lg-4', 'my-2');
+    bookItem.classList.add('col-12', 'col-md-6', 'col-lg-4', 'my-3');
     bookItem.innerHTML = `<book-card
         id=${JSON.stringify(id)}
         title=${JSON.stringify(title)}
@@ -106,36 +143,18 @@ const addBookHandler = (e) => {
   const bookTitle = document.querySelector('.new-book-title').value;
   const bookAuthor = document.querySelector('.new-book-author').value;
 
-  booksData.push({
-    id: Date.now(),
-    title: bookTitle,
-    author: bookAuthor,
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
-        earum saepe fugiat!`,
-    cover: 'assets/book.png',
-  });
+  const book = new Book(bookTitle, bookAuthor);
+  library.addBook(book);
+  recreateUI();
+};
 
-  localStorage.setItem('booksData', JSON.stringify(booksData));
+const removeBook = (idx) => {
+  library.removeBook(idx);
   recreateUI();
 };
 
 const main = () => {
-  const booksDataFromLocalStorage = JSON.parse(
-      localStorage.getItem('booksData'),
-  );
-  const booksLSExists =
-    booksDataFromLocalStorage !== undefined &&
-    booksDataFromLocalStorage !== null;
-
-  const initialBooksData = booksLSExists ?
-    booksDataFromLocalStorage :
-    booksData;
-
-  if (booksLSExists) {
-    booksData = booksDataFromLocalStorage;
-  }
-
-  recreateUI(initialBooksData);
+  recreateUI();
 };
 
 main();

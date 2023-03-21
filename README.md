@@ -151,6 +151,10 @@ You can deploy this project using: N/A
 - Twitter: [@twitterhandle](https://twitter.com/tomudoh1)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/tom-udoh-a89046256/)
 
+👤 **Abdullah AL-Khureif**
+- GitHub: [@OnlyUnknown](https://github.com/OnlyUnkown)
+- LinkedIn : [LinkedIn](https://www.linkedin.com/in/abdullah-khureif)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🔭 Future Features <a name="future-features"></a>
