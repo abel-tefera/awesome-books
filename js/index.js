@@ -67,11 +67,14 @@ class Library {
   }
 }
 
-addBook(book) {
+addBook(book) 
+{
   this.booksData.push(book);
   localStorage.setItem('booksData', JSON.stringify(this.booksData));
 }
-removeBook(bookId) {
+
+removeBook(bookId) 
+{
   this.booksData = this.booksData.filter(({id}) => id !== bookId);
   localStorage.setItem('booksData', JSON.stringify(this.booksData));
 }
