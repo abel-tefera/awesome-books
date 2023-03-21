@@ -1,8 +1,6 @@
 /* eslint-disable require-jsdoc */
 /* eslint-disable no-unused-vars */
 
-/* eslint-disable */
-
 class Book {
   constructor(title, author) {
     this.id = Date.now();
@@ -65,15 +63,14 @@ class Library {
         },
       ];
   }
-}
-
-addBook(book) {
-  this.booksData.push(book);
-  localStorage.setItem('booksData', JSON.stringify(this.booksData));
-}
-removeBook(bookId) {
-  this.booksData = this.booksData.filter(({id}) => id !== bookId);
-  localStorage.setItem('booksData', JSON.stringify(this.booksData));
+  addBook(book) {
+    this.booksData.push(book);
+    localStorage.setItem('booksData', JSON.stringify(this.booksData));
+  }
+  removeBook(bookId) {
+    this.booksData = this.booksData.filter(({id}) => id !== bookId);
+    localStorage.setItem('booksData', JSON.stringify(this.booksData));
+  }
 }
 
 const library = new Library();
