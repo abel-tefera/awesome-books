@@ -1,4 +1,8 @@
 /* stylelint-disable max-empty-lines */
 /* stylelint-disable no-empty-source */
+.nav-btn {
+  border: none;
+  background-color: inherit;
+}
 
 /*# sourceMappingURL=index.css.map */
