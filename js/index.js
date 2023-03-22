@@ -166,6 +166,14 @@ const main = () => {
 const form = document.querySelector(".add-book-form");
 form.addEventListener("submit", addBookHandler);
 
+const contactBtn = document.querySelector('#contact-btn');
+contactBtn.addEventListener('click', () => {
+  showContact();
+})
 
+const homeBtn = document.querySelector('#home-btn');
+homeBtn.addEventListener('click', () => {
+  main();
+})
 
 main();
