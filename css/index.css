@@ -1,9 +1,61 @@
 /* stylelint-disable max-empty-lines */
 /* stylelint-disable no-empty-source */
+* {
+  font-family: "poppins", sans-serif;
+}
+
 .nav-btn {
   border: none;
   background-color: inherit;
 }
+
+.card-img-top {
+  width: 100%;
+}
+
+.navbar {
+background-color: #777070;
+color: #fff;
+} 
+
+.navbar-toggler {
+  display: none;
+}
+
+.navbar-brand {
+  text-decoration: none;
+  color: black;
+}
+
+.navbar-nav {
+  display: flex;
+  gap: 20px;
+  list-style-type: none;
+  justify-content: end;
+  margin-top: -10px;
+}
+
+
+/* Books */
+.row {
+  display:grid;
+  grid-template-columns:auto auto auto;
+  gap: 15px;
+}
+
+.col-12 {
+  border: #777070 solid 1px;
+  padding: 10px 
+}
+
+.btn {
+  color: #fff;
+  border-color: #fff;
+  background-color: rgba(45, 137, 223, 0.87);
+  padding: 10px;
+  border-radius: 8px;
+}
+
 
 @media only screen and (min-width: 768px) {
   .add-book-form {
