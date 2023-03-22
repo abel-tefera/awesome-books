@@ -112,8 +112,9 @@ class bookCard extends HTMLElement {
 
 customElements.define('book-card', bookCard);
 
-const addBookModal = document.querySelector('.modal');
+// const addBookModal = document.querySelector('.modal');
 const contactForm = document.querySelector('.contact-form');
+const addBookContainer = document.querySelector('.add-book-container');
 
 const recreateUI = () => {
   const existingBooks = document.querySelector('.books-container');
@@ -143,11 +144,13 @@ const recreateUI = () => {
 
 const addBookHandler = (e) => {
   e.preventDefault();
-  const bookTitle = document.querySelector('.new-book-title').value;
-  const bookAuthor = document.querySelector('.new-book-author').value;
+  const bookTitle = document.querySelector('.new-book-title');
+  const bookAuthor = document.querySelector('.new-book-author');
 
-  const book = new Book(bookTitle, bookAuthor);
+  const book = new Book(bookTitle.value, bookAuthor.value);
   library.addBook(book);
+  bookTitle.value = '';
+  bookAuthor.value = '';
   main();
 };
 
@@ -158,15 +161,26 @@ const removeBook = (idx) => {
 
 const main = () => {
   contactForm.style.display = 'none';
+  addBookContainer.style.display = 'none';
   recreateUI();
 };
 
 const showContact = () => {
   contactForm.style.display = 'block';
+  addBookContainer.style.display = 'none';
   const existingBooks = document.querySelector('.books-container');
   if (existingBooks) {
     existingBooks.remove();
   }
+};
+
+const showAddBook = () => {
+  contactForm.style.display = 'none';
+  const existingBooks = document.querySelector('.books-container');
+  if (existingBooks) {
+    existingBooks.remove();
+  }
+  addBookContainer.style.display = 'block';
 };
 
 const form = document.querySelector('.add-book-form');
@@ -180,6 +194,11 @@ contactBtn.addEventListener('click', () => {
 const homeBtn = document.querySelector('#home-btn');
 homeBtn.addEventListener('click', () => {
   main();
+});
+
+const addBookBtn = document.querySelector('#add-book-btn');
+addBookBtn.addEventListener('click', () => {
+  showAddBook();
 });
 
 main();
