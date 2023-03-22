@@ -163,6 +163,14 @@ const main = () => {
   recreateUI();
 };
 
+const showContact = () => {
+  contactForm.style.display = "block";
+  const existingBooks = document.querySelector(".books-container");
+  if (existingBooks) {
+    existingBooks.remove();
+  }
+};
+
 const form = document.querySelector(".add-book-form");
 form.addEventListener("submit", addBookHandler);
 
