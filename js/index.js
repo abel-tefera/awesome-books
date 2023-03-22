@@ -1,8 +1,6 @@
 /* eslint-disable require-jsdoc */
 /* eslint-disable no-unused-vars */
 
-/* eslint-disable */
-
 class Book {
   constructor(title, author) {
     this.id = Date.now();
@@ -18,62 +16,62 @@ class Book {
 class Library {
   constructor() {
     const booksDataFromLocalStorage = JSON.parse(
-      localStorage.getItem("booksData")
+        localStorage.getItem('booksData'),
     );
     const booksLSExists =
       booksDataFromLocalStorage !== undefined &&
       booksDataFromLocalStorage !== null;
 
-    this.booksData = booksLSExists
-      ? booksDataFromLocalStorage
-      : [
-          {
-            id: 1,
-            title: `Lorem, ipsum.`,
-            author: `John Doe`,
-            description: `Lorem ipsum dolor sit amet consectetur 
+    this.booksData = booksLSExists ?
+      booksDataFromLocalStorage :
+      [
+        {
+          id: 1,
+          title: `Lorem, ipsum.`,
+          author: `John Doe`,
+          description: `Lorem ipsum dolor sit amet consectetur 
           adipisicing elit. Velit
             earum saepe fugiat!`,
-            cover: `assets/book.png`,
-          },
-          {
-            id: 2,
-            title: `Lorem, ipsum.`,
-            author: `John Doe`,
-            description: `Lorem ipsum dolor sit amet consectetur 
+          cover: `assets/book.png`,
+        },
+        {
+          id: 2,
+          title: `Lorem, ipsum.`,
+          author: `John Doe`,
+          description: `Lorem ipsum dolor sit amet consectetur 
           adipisicing elit. Velit
             earum saepe fugiat!`,
-            cover: `assets/book.png`,
-          },
-          {
-            id: 3,
-            title: `Lorem, ipsum.`,
-            author: `John Doe`,
-            description: `Lorem ipsum dolor sit amet consectetur 
+          cover: `assets/book.png`,
+        },
+        {
+          id: 3,
+          title: `Lorem, ipsum.`,
+          author: `John Doe`,
+          description: `Lorem ipsum dolor sit amet consectetur 
           adipisicing elit. Velit
             earum saepe fugiat!`,
-            cover: `assets/book.png`,
-          },
-          {
-            id: 4,
-            title: `Lorem, ipsum.`,
-            author: `John Doe`,
-            description: `Lorem ipsum dolor sit amet consectetur 
+          cover: `assets/book.png`,
+        },
+        {
+          id: 4,
+          title: `Lorem, ipsum.`,
+          author: `John Doe`,
+          description: `Lorem ipsum dolor sit amet consectetur 
           adipisicing elit. Velit
             earum saepe fugiat!`,
-            cover: `assets/book.png`,
-          },
-        ];
+          cover: `assets/book.png`,
+        },
+      ];
   }
 
   addBook(book) {
     this.booksData.push(book);
-    localStorage.setItem("booksData", JSON.stringify(this.booksData));
+    localStorage.setItem('booksData', JSON.stringify(this.booksData));
   }
 
   removeBook(bookId) {
-    this.booksData = this.booksData.filter(({ id }) => id !== bookId);
-    localStorage.setItem("booksData", JSON.stringify(this.booksData));
+    this.booksData = this.booksData.filter(({id}) => id !== bookId);
+    localStorage.setItem('booksData', JSON.stringify(this.booksData));
   }
 }
 
@@ -85,7 +83,7 @@ class bookCard extends HTMLElement {
   }
 
   connectedCallback() {
-    const { id, title, author, description, cover } = this.attributes;
+    const {id, title, author, description, cover} = this.attributes;
 
     this.innerHTML = `
         <div class="card mx-auto">
@@ -102,34 +100,34 @@ class bookCard extends HTMLElement {
         </div>
       `;
 
-    const cardBtns = document.querySelectorAll(".card-btn");
+    const cardBtns = document.querySelectorAll('.card-btn');
     cardBtns.forEach((cardBtn) => {
-      const idx = parseInt(cardBtn.id.split("-")[2]);
-      cardBtn.addEventListener("click", () => {
+      const idx = parseInt(cardBtn.id.split('-')[2]);
+      cardBtn.addEventListener('click', () => {
         removeBook(idx);
       });
     });
   }
 }
 
-customElements.define("book-card", bookCard);
+customElements.define('book-card', bookCard);
 
-const addBookModal = document.querySelector(".modal");
-const contactForm = document.querySelector(".contact-form");
+const addBookModal = document.querySelector('.modal');
+const contactForm = document.querySelector('.contact-form');
 
 const recreateUI = () => {
-  const existingBooks = document.querySelector(".books-container");
+  const existingBooks = document.querySelector('.books-container');
   if (existingBooks) {
     existingBooks.remove();
   }
-  const mainContainer = document.querySelector(".main-container");
-  const bookContainer = document.createElement("div");
-  bookContainer.classList.add("row", "books-container");
+  const mainContainer = document.querySelector('.main-container');
+  const bookContainer = document.createElement('div');
+  bookContainer.classList.add('row', 'books-container');
 
   for (const book of library.booksData) {
-    const { id, title, author, description, cover } = book;
-    const bookItem = document.createElement("div");
-    bookItem.classList.add("col-12", "col-md-6", "col-lg-4", "my-3");
+    const {id, title, author, description, cover} = book;
+    const bookItem = document.createElement('div');
+    bookItem.classList.add('col-12', 'col-md-6', 'col-lg-4', 'my-3');
     bookItem.innerHTML = `<book-card
         id=${JSON.stringify(id)}
         title=${JSON.stringify(title)}
@@ -145,12 +143,12 @@ const recreateUI = () => {
 
 const addBookHandler = (e) => {
   e.preventDefault();
-  const bookTitle = document.querySelector(".new-book-title").value;
-  const bookAuthor = document.querySelector(".new-book-author").value;
+  const bookTitle = document.querySelector('.new-book-title').value;
+  const bookAuthor = document.querySelector('.new-book-author').value;
 
   const book = new Book(bookTitle, bookAuthor);
   library.addBook(book);
-  recreateUI();
+  main();
 };
 
 const removeBook = (idx) => {
@@ -159,29 +157,29 @@ const removeBook = (idx) => {
 };
 
 const main = () => {
-  contactForm.style.display = "none";
+  contactForm.style.display = 'none';
   recreateUI();
 };
 
 const showContact = () => {
-  contactForm.style.display = "block";
-  const existingBooks = document.querySelector(".books-container");
+  contactForm.style.display = 'block';
+  const existingBooks = document.querySelector('.books-container');
   if (existingBooks) {
     existingBooks.remove();
   }
 };
 
-const form = document.querySelector(".add-book-form");
-form.addEventListener("submit", addBookHandler);
+const form = document.querySelector('.add-book-form');
+form.addEventListener('submit', addBookHandler);
 
 const contactBtn = document.querySelector('#contact-btn');
 contactBtn.addEventListener('click', () => {
   showContact();
-})
+});
 
 const homeBtn = document.querySelector('#home-btn');
 homeBtn.addEventListener('click', () => {
   main();
-})
+});
 
 main();
