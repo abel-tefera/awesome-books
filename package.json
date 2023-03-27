@@ -3,8 +3,6 @@
   "version": "1.0.0",
   "description": "<a name=\"readme-top\"></a>",
   "main": "index.js",
-  "type": "module",
-  "module": "es6",
   "scripts": {
     "build": "webpack --mode development",
     "start": "webpack serve --open"

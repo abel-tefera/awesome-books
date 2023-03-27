@@ -1,5 +1,4 @@
 /* eslint-disable require-jsdoc */
-/* eslint-disable no-unused-vars */
 
 export class bookCard extends HTMLElement {
   constructor() {
@@ -7,7 +6,7 @@ export class bookCard extends HTMLElement {
   }
 
   connectedCallback() {
-    const {id, title, author, description, cover} = this.attributes;
+    const {id, title, author, description} = this.attributes;
 
     this.innerHTML = `
           <div class="card mx-auto">

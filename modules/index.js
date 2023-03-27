@@ -1,5 +1,4 @@
 /* eslint-disable require-jsdoc */
-/* eslint-disable no-unused-vars */
 
 import '../css/index.css';
 import {Book} from './Book';
