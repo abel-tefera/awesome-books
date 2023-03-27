@@ -1,3 +1,6 @@
+/* eslint-disable require-jsdoc */
+/* eslint-disable no-unused-vars */
+
 export class Book {
   constructor(title, author) {
     this.id = Date.now();

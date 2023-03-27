@@ -1,12 +1,15 @@
+/* eslint-disable require-jsdoc */
+/* eslint-disable no-unused-vars */
+
 export class bookCard extends HTMLElement {
-    constructor() {
-      super();
-    }
-  
-    connectedCallback() {
-      const {id, title, author, description, cover} = this.attributes;
-  
-      this.innerHTML = `
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    const {id, title, author, description, cover} = this.attributes;
+
+    this.innerHTML = `
           <div class="card mx-auto">
             <div class="card-body">
               <h5 class="card-title">${title.value}</h5>
@@ -19,5 +22,5 @@ export class bookCard extends HTMLElement {
             </div>
           </div>
         `;
-    }
   }
+}

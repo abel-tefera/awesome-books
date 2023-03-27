@@ -1,13 +1,16 @@
+/* eslint-disable require-jsdoc */
+/* eslint-disable no-unused-vars */
+
 export class Library {
-    constructor() {
-      const booksDataFromLocalStorage = JSON.parse(
-          localStorage.getItem('booksData'),
-      );
-      const booksLSExists =
+  constructor() {
+    const booksDataFromLocalStorage = JSON.parse(
+        localStorage.getItem('booksData'),
+    );
+    const booksLSExists =
         booksDataFromLocalStorage !== undefined &&
         booksDataFromLocalStorage !== null;
-  
-      this.booksData = booksLSExists ?
+
+    this.booksData = booksLSExists ?
         booksDataFromLocalStorage :
         [
           {
@@ -47,15 +50,15 @@ export class Library {
             cover: `assets/book.png`,
           },
         ];
-    }
-  
-    addBook(book) {
-      this.booksData.push(book);
-      localStorage.setItem('booksData', JSON.stringify(this.booksData));
-    }
-  
-    removeBook(bookId) {
-      this.booksData = this.booksData.filter(({id}) => id !== bookId);
-      localStorage.setItem('booksData', JSON.stringify(this.booksData));
-    }
   }
+
+  addBook(book) {
+    this.booksData.push(book);
+    localStorage.setItem('booksData', JSON.stringify(this.booksData));
+  }
+
+  removeBook(bookId) {
+    this.booksData = this.booksData.filter(({id}) => id !== bookId);
+    localStorage.setItem('booksData', JSON.stringify(this.booksData));
+  }
+}
