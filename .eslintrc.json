@@ -7,8 +7,11 @@
     "extends": "google",
     "overrides": [
     ],
+    "parser": "babel-eslint",
     "parserOptions": {
-        "ecmaVersion": "latest"
+        "ecmaVersion": 12,
+        "sourceType": "module",
+        "allowImportExportEverywhere": true
     },
     "rules": {
     }
