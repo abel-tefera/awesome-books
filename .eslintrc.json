@@ -14,5 +14,6 @@
         "allowImportExportEverywhere": true
     },
     "rules": {
+        "require-jsdoc" : 0
     }
 }

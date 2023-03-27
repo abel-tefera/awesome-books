@@ -1,5 +1,3 @@
-/* eslint-disable require-jsdoc */
-
 export class bookCard extends HTMLElement {
   constructor() {
     super();

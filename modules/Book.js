@@ -1,5 +1,3 @@
-/* eslint-disable require-jsdoc */
-
 export class Book {
   constructor(title, author) {
     this.id = Date.now();

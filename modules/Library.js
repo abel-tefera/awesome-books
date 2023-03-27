@@ -1,5 +1,3 @@
-/* eslint-disable require-jsdoc */
-
 export class Library {
   constructor() {
     const booksDataFromLocalStorage = JSON.parse(

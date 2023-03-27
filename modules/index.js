@@ -1,5 +1,3 @@
-/* eslint-disable require-jsdoc */
-
 import '../css/index.css';
 import {Book} from './Book';
 import {bookCard} from './bookCard';
