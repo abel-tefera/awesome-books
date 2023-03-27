@@ -1,1 +1,0 @@
-sass css/index.scss css/index.css
